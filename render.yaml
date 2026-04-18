@@ -1,0 +1,48 @@
+# render.yaml - Render deployment config
+# Docs: https://render.com/docs/infrastructure-as-code
+
+services:
+  - type: web
+    name: spring-llm-app
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    
+    # ⚠️ IMPORTANT: 2.8GB model ke liye paid plan chahiye
+    # Free plan me only 512MB RAM hoti hai
+    # Minimum: Standard plan ($7/mo) with 2GB RAM
+    plan: standard
+
+    region: oregon  # ya singapore agar India ke liye
+
+    # Environment variables
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: MODEL_PATH
+        value: /app/models
+      - key: PORT
+        value: 8080
+      # Secrets - Render dashboard me set karo
+      - key: DB_URL
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+
+    # Persistent disk for LLM model (2.8GB)
+    disk:
+      name: model-storage
+      mountPath: /app/models
+      sizeGB: 5  # 2.8GB model + buffer
+
+    healthCheckPath: /actuator/health
+
+    # Auto-deploy on push
+    autoDeploy: true
+
+# ─────────────────────────────────────────────
+# Render pe model kaise upload kare:
+# Option A: Render Shell se wget/curl karke download
+# Option B: Deploy ke baad SSH karke scp se copy
+# render shell: dashboard > service > shell
+# Command: wget -O /app/models/model.gguf "YOUR_MODEL_URL"
+# ─────────────────────────────────────────────
