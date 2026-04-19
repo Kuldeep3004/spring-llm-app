@@ -154,7 +154,7 @@ jobs:
           
           echo "HTTP Status: $RESPONSE"
           
-          if [ "$RESPONSE" == "200" ] || [ "$RESPONSE" == "201" ]; then
+          if [ "$RESPONSE" == "200" ] || [ "$RESPONSE" == "201" ] || [ "$RESPONSE" == "202" ]; then
             echo "status=success" >> $GITHUB_OUTPUT
             echo "✅ Render deploy triggered successfully"
           else
