@@ -564,7 +564,7 @@ Through this project, I learned and implemented:
 
 \- 💻 GitHub: \[@Kuldeep3004](https://github.com/Kuldeep3004)
 
-\- 📧 kuldeep.lahare1124@gmail.com
+\- 📧 laharekuldeep2@gmail.com 
 
 
 
