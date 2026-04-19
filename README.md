@@ -482,12 +482,6 @@ curl -X POST http://localhost:8000/scan \\
 
 ```
 
-
-
-\---
-
-
-
 \## 📊 Results \& Demo
 
 
@@ -566,6 +560,8 @@ Through this project, I learned and implemented:
 
 \- 🎓 AI \& Data Science Student
 
+\- 🏛️ Intern at \*\*NIT Rourkela\*\* (National Institute of Technology, Rourkela)
+
 \- 💻 GitHub: \[@Kuldeep3004](https://github.com/Kuldeep3004)
 
 \- 📧 kuldeep.lahare1124@gmail.com
@@ -580,7 +576,9 @@ Through this project, I learned and implemented:
 
 
 
-\- Project guided by my professor
+\- 🏛️ This project was developed during my internship at \*\*NIT Rourkela\*\*
+
+\- Project guided by my professor at NIT Rourkela
 
 \- DeepSeek AI for the base coder model
 
