@@ -14,7 +14,12 @@ public class OllamaController {
 
     @GetMapping("/health")
     public Map<String, String> health() {
-        return Map.of("status", "UP", "service", "spring-llm-app");
+      return Map.of(
+        "status", "UP",
+        "service", "spring-llm-app",
+        "version", "1.0",
+        "developer", "Kuldeep Lahare - NIT Rourkela Intern");
+    }
     }
 
     @PostMapping("/review")
