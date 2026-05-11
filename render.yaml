@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: spring-llm-app
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    
+    plan: standard
+
+    region: oregon  # ya singapore agar India ke liye
+
+    # Environment variables
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: MODEL_PATH
+        value: /app/models
+      - key: PORT
+        value: 8080
+      # Secrets - Render dashboard me set karo
+      - key: DB_URL
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+
+    # Persistent disk for LLM model (2.8GB)
+    disk:
+      name: model-storage
+      mountPath: /app/models
+      sizeGB: 5  # 2.8GB model + buffer
+
+    healthCheckPath: /actuator/health
+
+    # Auto-deploy on push
+    autoDeploy: true
