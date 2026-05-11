@@ -1,9 +1,19 @@
 package com.kuldeep;
 
-import org.springframework.web.bind.annotation.*;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.http.*;
-import java.util.*;
 
 @RestController
 @RequestMapping("/api")
@@ -12,14 +22,13 @@ public class OllamaController {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String OLLAMA_URL = "http://localhost:11434/api/generate";
 
-    @GetMapping("/health")
-    public Map<String, String> health() {
-        return Map.of(
-                "status", "UP",
-                "service", "spring-llm-app",
-                "version", "1.0",
-                "developer", "Kuldeep Lahare - NIT Rourkela Intern");
-    }
+@GetMapping("/vulnerable")
+public String vulnerable(@RequestParam String userInput) {
+
+    String query = "SELECT * FROM users WHERE id=" + userInput;
+
+    return "Executing: " + query;
+}
 
     @PostMapping("/review")
     public Map<String, Object> reviewCode(@RequestBody Map<String, String> request) {
