@@ -27,7 +27,7 @@ public String vulnerable(@RequestParam String userInput) {
 
     String query = "SELECT * FROM users WHERE id=" + userInput;
 
-    return "Executing: " + query;
+    return "Potentially vulnerable query: " + query;
 }
 
     @PostMapping("/review")
